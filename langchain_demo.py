@@ -1,8 +1,7 @@
-import re
-from html import unescape
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_nebius import ChatNebius
+from langchain_core.output_parsers import StrOutputParser
 
 load_dotenv()
 
@@ -28,11 +27,7 @@ if __name__ == "__main__":
 
     llm = ChatNebius(temperature=0, model="Qwen/Qwen3-14B")
 
-    chain = summary_prompt_template | llm
+    chain = summary_prompt_template | llm | StrOutputParser()
 
     res = chain.invoke(input={"information": information})
-
-    raw_content = res.content
-    cleaned = re.sub(r"<think>.*?</think>\s*", "", raw_content, flags=re.DOTALL)
-    cleaned = unescape(cleaned).strip()
-    print(cleaned)
+    print(res)
