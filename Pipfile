@@ -8,6 +8,7 @@ langchain-community = "*"
 langchain-nebius = "*"
 langchainhub = "*"
 black = "*"
+langchain = "*"
 
 [dev-packages]
 

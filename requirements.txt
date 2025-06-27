@@ -1,0 +1,10 @@
+pydantic
+requests
+langchain
+langchainhub
+langchain_openai
+langchain_community
+langchain_ollama
+langchain_nebius
+dotenv
+Ipython
